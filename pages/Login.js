@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button, Image, TextInput, Dimensions, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Alert, Image, TextInput, Dimensions, TouchableOpacity } from 'react-native'
 import logo from '../assets/logo.png';
 import { FontAwesome, Entypo } from '@expo/vector-icons';
 
@@ -65,8 +65,8 @@ const Login = (props) => {
             <Text style={styles.text}>Se connecter</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity  >
-                <Text style={{color:'#003e42',textDecorationLine:'underline',fontSize:15,marginTop:10} }> mot de passe oublié? </Text>
+            <TouchableOpacity onPress={()=>Alert.alert('Message','Todo')}  >
+                <Text style={{color:'#003e42',textDecorationLine:'underline',fontSize:15,marginTop:10,}}> Mot de passe oublié? </Text>
             </TouchableOpacity>
         </View>
     )
