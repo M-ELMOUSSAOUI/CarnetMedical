@@ -65,10 +65,9 @@ const Login = (props) => {
             <Text style={styles.text}>Se connecter</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity>
-                <Text> mot de passe oublié? </Text>
+            <TouchableOpacity  >
+                <Text style={{color:'#003e42',textDecorationLine:'underline',fontSize:15,marginTop:10} }> mot de passe oublié? </Text>
             </TouchableOpacity>
-
         </View>
     )
 }
