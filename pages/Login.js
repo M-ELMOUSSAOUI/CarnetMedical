@@ -66,7 +66,7 @@ const Login = (props) => {
             </TouchableOpacity>
 
             <TouchableOpacity>
-                
+                <Text> mot de passe oublié? </Text>
             </TouchableOpacity>
 
         </View>
