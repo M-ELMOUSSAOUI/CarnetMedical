@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native'
 const Signup = () => {
     return (
         <View style={styles.container} >
-            <Text> iscreption </Text>
+            <Text> todo</Text>
         </View>
     )
 }
