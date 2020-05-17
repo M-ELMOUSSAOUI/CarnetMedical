@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Alert, Image, TextInput, Dimensions, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Alert, Image, TextInput, Dimensions, TouchableOpacity, TouchableWithoutFeedback, key, Keyboard } from 'react-native'
 import logo from '../assets/logo.png';
 import { FontAwesome, Entypo } from '@expo/vector-icons';
 
@@ -23,52 +23,55 @@ const Login = (props) => {
             setShowPass(true);
         }
     }
-    const login = ()=>{
+    const login = () => {
         props.navigation.push('home');
     }
 
     return (
-        <View style={styles.backgroundContainer} >
-            <View style={styles.logoContainer}>
-                <Image source={logo} style={{ width: 120, height: 120 }} />
-            </View>
-            <View style={{ marginTop: 10 }}>
-                <Entypo name='email' size={28} color='#003e42' style={styles.inputIcon} />
-                <TextInput
-                    style={styles.input}
-                    placeholder={'E-mail'}
-                    placeholderTextColor={'rgba(0,0,0,0.5)'}
-                    underlineColorAndroid='transparent'
-                />
-            </View>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles.backgroundContainer} >
+                <View style={styles.logoContainer}>
+                    <Image source={logo} style={{ width: 120, height: 120 }} />
+                </View>
+                <View style={{ marginTop: 10 }}>
+                    <Entypo name='email' size={28} color='#003e42' style={styles.inputIcon} />
+                    <TextInput
+                        style={styles.input}
+                        placeholder={'E-mail'}
+                        placeholderTextColor={'rgba(0,0,0,0.5)'}
+                        underlineColorAndroid='transparent'
+                    />
+                </View>
 
-            <View style={{ marginTop: 10 }}>
-                <FontAwesome name={'lock'} size={28} color="#003e42" style={styles.inputIcon} />
-                <TextInput
-                    style={styles.input}
-                    placeholder={'Mot de passe'}
-                    placeholderTextColor={'rgba(0,0,0,0.5)'}
-                    secureTextEntry={showPass}
-                    underlineColorAndroid='transparent'
-                />
-                <TouchableOpacity style={styles.btnEye}
-                    onPress={togglePass}
+                <View style={{ marginTop: 10 }}>
+                    <FontAwesome name={'lock'} size={28} color="#003e42" style={styles.inputIcon} />
+                    <TextInput
+                        style={styles.input}
+                        placeholder={'Mot de passe'}
+                        placeholderTextColor={'rgba(0,0,0,0.5)'}
+                        secureTextEntry={showPass}
+                        underlineColorAndroid='transparent'
+                    />
+                    <TouchableOpacity style={styles.btnEye}
+                        onPress={togglePass}
+                    >
+                        <FontAwesome name={press == false ? 'eye' : 'eye-slash'} color='#000' size={28} />
+                    </TouchableOpacity>
+                </View>
+
+                <TouchableOpacity
+                    style={styles.btnLogin}
+                    onPress={login}
                 >
-                    <FontAwesome name={press == false ? 'eye' : 'eye-slash'} color='#000' size={28} />
+                    <Text style={styles.text}>Se connecter</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => Alert.alert('Message', 'Todo')}  >
+                    <Text style={{ color: '#003e42', textDecorationLine: 'underline', fontSize: 15, marginTop: 10,fontWeight:'500', }}> Mot de passe oublié? </Text>
                 </TouchableOpacity>
             </View>
+        </TouchableWithoutFeedback>
 
-            <TouchableOpacity 
-            style={styles.btnLogin}
-            onPress={login}
-            >
-            <Text style={styles.text}>Se connecter</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={()=>Alert.alert('Message','Todo')}  >
-                <Text style={{color:'#003e42',textDecorationLine:'underline',fontSize:15,marginTop:10,}}> Mot de passe oublié? </Text>
-            </TouchableOpacity>
-        </View>
     )
 }
 
@@ -88,7 +91,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 25
     },
     backgroundContainer: {
-        marginTop:-150,
+        marginTop: -150,
         flex: 1,
         width: null,
         height: null,
